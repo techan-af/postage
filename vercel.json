@@ -1,7 +1,7 @@
 {
-  "cron": [
+  "crons": [
     {
-      "path": "/api/cron/deliver-postcards",
+      "path": "/api/cron-job/deliver-postcards",
       "schedule": "*/5 * * * *"
     }
   ]
