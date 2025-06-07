@@ -1,8 +1,8 @@
 {
-  "crons": [
+  "cron": [
     {
-      "path": "/api/cron-job/deliver-postcards",
-      "schedule": "0 * * * *"
+      "path": "/api/cron/deliver-postcards",
+      "schedule": "0 19 * * *"
     }
   ]
 }
