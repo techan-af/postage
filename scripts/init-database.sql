@@ -1,0 +1,66 @@
+-- Initialize MongoDB Collections (This is a reference for the collections structure)
+-- In MongoDB, collections are created automatically when first document is inserted
+
+-- Users Collection
+-- {
+--   _id: ObjectId,
+--   username: String (unique),
+--   email: String (unique),
+--   password: String (hashed),
+--   createdAt: Date,
+--   ownedStamps: [String], // Array of stamp IDs
+--   isAdmin: Boolean
+-- }
+
+-- Postcards Collection
+-- {
+--   _id: ObjectId,
+--   from: String, // username
+--   to: String, // username
+--   message: String,
+--   stamps: [String], // Array of stamp IDs
+--   createdAt: Date,
+--   deliveryDate: Date,
+--   delivered: Boolean,
+--   opened: Boolean
+-- }
+
+-- Stamps Collection
+-- {
+--   _id: ObjectId,
+--   name: String,
+--   description: String,
+--   imageUrl: String,
+--   prompt: String,
+--   submittedBy: String, // username
+--   approved: Boolean,
+--   createdAt: Date
+-- }
+
+-- StampRequests Collection
+-- {
+--   _id: ObjectId,
+--   prompt: String,
+--   submittedBy: String, // username
+--   status: String, // 'pending', 'approved', 'rejected'
+--   createdAt: Date,
+--   stampId: String // Optional, set when approved
+-- }
+
+-- Contacts Collection
+-- {
+--   _id: ObjectId,
+--   user1: String, // username
+--   user2: String, // username
+--   lastPostcard: Date,
+--   postcards: [ObjectId] // Array of postcard IDs
+-- }
+
+-- Create indexes for better performance
+-- db.users.createIndex({ "username": 1 }, { unique: true })
+-- db.users.createIndex({ "email": 1 }, { unique: true })
+-- db.postcards.createIndex({ "to": 1, "deliveryDate": 1 })
+-- db.postcards.createIndex({ "from": 1 })
+-- db.stamps.createIndex({ "approved": 1 })
+-- db.stampRequests.createIndex({ "status": 1 })
+-- db.contacts.createIndex({ "user1": 1, "user2": 1 })
